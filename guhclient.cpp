@@ -37,37 +37,40 @@ void GuhClient::slotDisconnected()
 
 void GuhClient::readData()
 {
-
-    QByteArray data = readAll();
-    if (data == "NL") {
-        qDebug() << "navigation left";
-        emit navigateLeft();
-    } else if (data == "NR\n") {
-        qDebug() << "navigation right";
-        emit navigateRight();
-    } else if (data == "L\n") {
-        qDebug() << "tick left";
-        emit tickLeft();
-    } else if (data == "R\n") {
-        qDebug() << "rick right";
-        emit tickRight();
-    } else if (data == "BP\n") {
-        qDebug() << "button pressed";
-        emit buttonPressed();
-    } else if (data == "BR\n") {
-        qDebug() << "button released";
-        emit buttonReleased();
-    } else if (data == "BLP\n") {
-        qDebug() << "button long pressed";
-        emit buttonLongPressed();
-    } else if (data == "HDE\n") {
-        qDebug() << "hand detected";
-        emit handDetected();
-    } else if (data == "HDI\n") {
-        qDebug() << "hand disappeared";
-        emit handDisappeard();
-    } else {
-        qDebug() << "ERROR: could nor parse message:" << data;
+    while(canReadLine()){
+        QByteArray data = readLine();
+        if(data.endsWith('\n')){
+            if (data == "NL") {
+                qDebug() << "navigation left";
+                emit navigateLeft();
+            } else if (data == "NR\n") {
+                qDebug() << "navigation right";
+                emit navigateRight();
+            } else if (data == "L\n") {
+                qDebug() << "tick left";
+                emit tickLeft();
+            } else if (data == "R\n") {
+                qDebug() << "tick right";
+                emit tickRight();
+            } else if (data == "BP\n") {
+                qDebug() << "button pressed";
+                emit buttonPressed();
+            } else if (data == "BR\n") {
+                qDebug() << "button released";
+                emit buttonReleased();
+            } else if (data == "BLP\n") {
+                qDebug() << "button long pressed";
+                emit buttonLongPressed();
+            } else if (data == "HDE\n") {
+                qDebug() << "hand detected";
+                emit handDetected();
+            } else if (data == "HDI\n") {
+                qDebug() << "hand disappeared";
+                emit handDisappeard();
+            } else {
+                qDebug() << "ERROR: could nor parse message:" << data;
+            }
+        }
     }
 }
 

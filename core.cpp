@@ -17,6 +17,8 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "core.h"
+#include <QJsonDocument>
+
 
 Core::Core(QObject *parent) :
     QObject(parent)
@@ -40,7 +42,6 @@ Core::Core(QObject *parent) :
     connect(m_client, SIGNAL(handDetected()), this, SIGNAL(handDetected()));
     connect(m_client, SIGNAL(handDisappeard()), this, SIGNAL(handDisappeard()));
 
-
     connectToGuh("10.10.10.53");
 }
 
@@ -51,7 +52,7 @@ void Core::connectToGuh(const QString &host)
 
 void Core::itemPressed(const int &itemNumber)
 {
-    //m_client->sendData();
+
 }
 
 void Core::itemValueChanged(const int &itemNumber, const int &value)
