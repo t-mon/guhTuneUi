@@ -28,4 +28,33 @@ Core::Core(QObject *parent) :
     m_view->setSource(QUrl(QLatin1String("qrc:///guhtune-ui/main.qml")));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->showFullScreen();
+
+    m_client = new GuhClient(this);
+    connect(m_client, SIGNAL(buttonPressed()), this, SIGNAL(buttonPressed()));
+    connect(m_client, SIGNAL(buttonReleased()), this, SIGNAL(buttonReleased()));
+    connect(m_client, SIGNAL(buttonLongPressed()), this, SIGNAL(buttonLongPressed()));
+    connect(m_client, SIGNAL(tickLeft()), this, SIGNAL(tickLeft()));
+    connect(m_client, SIGNAL(tickRight()), this, SIGNAL(tickRight()));
+    connect(m_client, SIGNAL(navigateLeft()), this, SIGNAL(navigateLeft()));
+    connect(m_client, SIGNAL(navigateRight()), this, SIGNAL(navigateRight()));
+    connect(m_client, SIGNAL(handDetected()), this, SIGNAL(handDetected()));
+    connect(m_client, SIGNAL(handDisappeard()), this, SIGNAL(handDisappeard()));
+
+
+    connectToGuh("10.10.10.53");
+}
+
+void Core::connectToGuh(const QString &host)
+{
+    m_client->connectToHost(QHostAddress(host), 9876);
+}
+
+void Core::itemPressed(const int &itemNumber)
+{
+    //m_client->sendData();
+}
+
+void Core::itemValueChanged(const int &itemNumber, const int &value)
+{
+
 }

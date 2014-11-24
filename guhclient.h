@@ -16,36 +16,23 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef CORE_H
-#define CORE_H
+#ifndef GUHCLIENT_H
+#define GUHCLIENT_H
 
 #include <QObject>
-#include <QGuiApplication>
-#include <QQuickView>
-#include <QQmlEngine>
-#include <QQmlContext>
-#include <QtQml>
-#include <QDebug>
-#include <QQuickView>
+#include <QTcpSocket>
 #include <QHostAddress>
 
-#include "guhclient.h"
-
-class Core : public QObject
+class GuhClient : public QTcpSocket
 {
     Q_OBJECT
 public:
-    explicit Core(QObject *parent = 0);
-
-private:
-    QQuickView *m_view;
-    GuhClient *m_client;
+    explicit GuhClient(QObject *parent = 0);
 
 private slots:
-    void connectToGuh(const QString &host);
-
-    void itemPressed(const int &itemNumber);
-    void itemValueChanged(const int &itemNumber, const int &value);
+    void slotConnected();
+    void slotDisconnected();
+    void readData();
 
 signals:
     void navigateLeft();
@@ -58,7 +45,8 @@ signals:
     void handDetected();
     void handDisappeard();
 
-
+public slots:
+    bool sendData(const QByteArray &data);
 };
 
-#endif // CORE_H
+#endif // GUHCLIENT_H

@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick network
 
 SOURCES += main.cpp \
-    core.cpp
+    core.cpp \
+    guhclient.cpp
 
 RESOURCES += qml.qrc    \
              images.qrc \
@@ -15,4 +16,5 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    core.h
+    core.h \
+    guhclient.h
