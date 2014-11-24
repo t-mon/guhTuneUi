@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>guhtune-ui/DebugUi.qml</file>
+        <file>guhtune-ui/main.qml</file>
+        <file>guhtune-ui/TempIndicator.qml</file>
+        <file>guhtune-ui/ValueCircle.qml</file>
+    </qresource>
+</RCC>
