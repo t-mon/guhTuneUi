@@ -21,41 +21,24 @@ import QtQuick 2.1
 Item {
     id: root
 
-    property int value: 0
-    property alias circleOpacity: outerCircle.opacity
+    property int value: 10
 
-    Rectangle {
-        id: outerCircle
-        anchors.fill: parent
-        color: "#9fc84a"
-        radius: width / 2
-    }
-
-    QtObject {
-        id: priv
-        // value : 100 = angle: (360-90)
-        property int angle: Math.max(0, Math.min(100, root.value)) * (360-90) / 100
-    }
+    // value : 100 = x : 50
 
     Repeater {
-        model: 4
+        model: 50
 
-        Rectangle {
-            color: "black"
-            anchors {
-                centerIn: parent
-                horizontalCenterOffset: height / 2
-                verticalCenterOffset: height / 2
-            }
+        Item {
+            height: root.height * 0.95
+            width: height / 100
+            anchors.centerIn: parent
 
-            height: parent.height
-            width: height
-
-            transform: Rotation {
-                angle: {
-                    var startValue = 45 + 90 * (index+1);
-                    return Math.max(startValue, startValue + priv.angle - 90 * index)
-                }
+            rotation: -79 + index * 3.2
+            Rectangle {
+                anchors { top: parent.top; left: parent.left; right: parent.right }
+                height: width * 10
+                radius: width / 2
+                opacity: index <= root.value/2 ? 1 : 0.5
             }
         }
     }

@@ -139,18 +139,8 @@ Rectangle {
     }
 
     property int maxSize: Math.min(root.height, root.width)
-    ValueCircle {
-        id: valueCircle
-        height: maxSize
-        width: height
-        anchors.centerIn: parent
-        value: repeater.count > 0 ? repeater.itemAt(root.currentItem).value : 0
-        circleOpacity: 0
-        visible: root.currentItem == 0
-        Behavior on circleOpacity {
-            NumberAnimation {}
-        }
-    }
+    property int innerSize: maxSize * 0.6
+
     Rectangle {
         anchors.centerIn: parent
         height: maxSize - maxSize / 10
@@ -160,8 +150,17 @@ Rectangle {
     }
 
     Rectangle {
+        anchors.centerIn: parent
+        height: innerSize
+        width: innerSize
+        color: "#4DC6A9"
+        radius: height / 2
+    }
+
+
+    Rectangle {
         id: rotator
-        height: maxSize - maxSize / 10
+        height: innerSize - innerSize / 10
         width: height
         radius: height / 2
         anchors.centerIn: parent
@@ -222,6 +221,15 @@ Rectangle {
                     }
                     Behavior on opacity {
                         NumberAnimation {}
+                    }
+
+                    ValueCircle {
+                        id: valueCircle
+                        height: parent.height
+                        width: height
+                        anchors.centerIn: parent
+                        value: imageItem.value
+                        visible: index == 1 || index == 2
                     }
 
                     Item {
@@ -295,6 +303,14 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        height: maxSize
+        width: maxSize
+        anchors.centerIn: parent
+        opacity: clock.opacity
+        color: "black"
+    }
+
     Text {
         id: clock
         Timer {
@@ -314,11 +330,18 @@ Rectangle {
 
     Image {
         id: splashImage
-        width: root.height
-        height: root.height
+        width: innerSize
+        height: innerSize
         anchors.centerIn: parent
         source: "qrc:///images/logo.svg"
         opacity: 0
+    }
+
+    Image {
+        height: maxSize
+        width: maxSize
+        anchors.centerIn: parent
+        source: "qrc:///images/front.png"
     }
 
     DebugUi {
