@@ -45,6 +45,8 @@ signals:
     void handDetected();
     void handDisappeard();
 
+    void itemChangedPowerState(const int &item, const bool & powerState);
+
 public slots:
     bool sendData(const QByteArray &data);
 };

@@ -40,6 +40,7 @@ void GuhClient::readData()
 {
     while(canReadLine()){
         QByteArray data = readLine();
+        qDebug() << data;
         if(data.endsWith('\n')){
             if (data == "NL\n") {
                 qDebug() << "navigation left";
@@ -68,6 +69,33 @@ void GuhClient::readData()
             } else if (data == "HDI\n") {
                 qDebug() << "hand disappeared";
                 emit handDisappeard();
+            } else if (data.left(2) == "1:"){
+                if(data.right(2) == "0\n"){
+                    qDebug() << "item 1 -> OFF";
+                    emit itemChangedPowerState(1,false);
+                }
+                if(data.right(2) == "1\n"){
+                    qDebug() << "item 1 -> ON";
+                    emit itemChangedPowerState(1,true);
+                }
+            } else if (data.left(2) == "2:"){
+                if(data.right(2) == "0\n"){
+                    qDebug() << "item 2 -> OFF";
+                    emit itemChangedPowerState(2,false);
+                }
+                if(data.right(2) == "1\n"){
+                    qDebug() << "item 2 -> ON";
+                    emit itemChangedPowerState(2,true);
+                }
+            } else if (data.left(2) == "3:"){
+                if(data.right(2) == "0\n"){
+                    qDebug() << "item 3 -> OFF";
+                    emit itemChangedPowerState(3,false);
+                }
+                if(data.right(2) == "1\n"){
+                    qDebug() << "item 3 -> ON";
+                    emit itemChangedPowerState(3,true);
+                }
             } else {
                 qDebug() << "ERROR: could nor parse message:" << data;
             }

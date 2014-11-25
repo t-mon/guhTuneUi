@@ -57,7 +57,7 @@ private slots:
     void onTickLeft();
     void onTickRight();
 
-    void onOffChanged();
+    void onOffChanged(const int &index, const bool &powerState);
 
 signals:
     void navigateLeft();
