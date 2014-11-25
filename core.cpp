@@ -44,6 +44,14 @@ Core::Core(QObject *parent) :
     connect(m_client, SIGNAL(itemChangedPowerState(int,bool)), this, SLOT(onOffChanged(int,bool)));
 
     connectToGuh("10.10.10.53");
+
+    QVariantMap map;
+    map.insert("0", false); // light
+    map.insert("1", false); // coutch
+    map.insert("2", false); // tisch
+    map.insert("3", false); // radiator
+    m_view->engine()->rootContext()->setContextProperty("onOffStates", map);
+
 }
 
 void Core::connectToGuh(const QString &host)
@@ -93,9 +101,7 @@ void Core::onTickRight()
 
 void Core::onOffChanged(const int &index, const bool &powerState)
 {
-    QVariantMap map;
-    map.insert("1", true); // coutch
-    map.insert("2", false); // tisch
-    map.insert("3", false); // tisch
+    QVariantMap map = m_view->engine()->rootContext()->contextProperty("onOffStates").toMap();
+    map[QString::number(index)] = powerState;
     m_view->engine()->rootContext()->setContextProperty("onOffStates", map);
 }

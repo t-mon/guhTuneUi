@@ -22,7 +22,6 @@ Item {
     id: root
 
     property int value: 10
-    property bool on: true
 
     // value : 100 = x : 50
 
@@ -56,15 +55,5 @@ Item {
         color: "white"
         text: "+"
         anchors { right: parent.right; rightMargin: root.height / 40; verticalCenter: parent.verticalCenter; verticalCenterOffset: -root.height / 40 }
-    }
-
-    Text {
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-            bottomMargin: root.height * 0.1
-        }
-        text: root.on ? "ON" : "OFF"
-        font.pixelSize: root.height / 10
     }
 }

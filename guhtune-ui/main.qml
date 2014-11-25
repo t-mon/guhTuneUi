@@ -229,7 +229,16 @@ Rectangle {
                         anchors.centerIn: parent
                         value: imageItem.value
                         visible: index == 1 || index == 2
-                        on: onOffStates[index]
+                    }
+
+                    Text {
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            bottom: parent.bottom
+                            bottomMargin: parent.height * 0.1
+                        }
+                        text: onOffStates[index] == true ? "ON" : "OFF"
+                        font.pixelSize: parent.height / 10
                     }
 
                     Item {
