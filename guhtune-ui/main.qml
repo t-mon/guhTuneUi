@@ -263,7 +263,7 @@ Rectangle {
 
                         Image {
                             anchors.centerIn: parent
-                            anchors.horizontalCenterOffset: -width * 0.4
+                            anchors.horizontalCenterOffset: -parent.width * 0.25
                             height: parent.height / 3
                             width: height
                             source: "qrc:///images/radiator.svg"
@@ -290,7 +290,7 @@ Rectangle {
                         TempIndicator {
                             id: desiredTempBar
                             anchors.centerIn: parent
-                            anchors.horizontalCenterOffset: width * 1.5
+                            anchors.horizontalCenterOffset: parent.width * 0.25
                             height: parent.height / 3
                             width: height / 4
                             percentage: imageItem.value
