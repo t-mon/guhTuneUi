@@ -229,6 +229,7 @@ Rectangle {
                         anchors.centerIn: parent
                         value: imageItem.value
                         visible: index == 1 || index == 2
+                        on: onOffStates[index]
                     }
 
                     Item {

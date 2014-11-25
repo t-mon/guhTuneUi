@@ -43,6 +43,8 @@ Core::Core(QObject *parent) :
     connect(m_client, SIGNAL(handDisappeard()), this, SIGNAL(handDisappeard()));
 
     connectToGuh("10.10.10.53");
+
+    onOffChanged(); // init state values
 }
 
 void Core::connectToGuh(const QString &host)
@@ -88,4 +90,12 @@ void Core::onTickLeft()
 void Core::onTickRight()
 {
     emit smallStep(RotationRight);
+}
+
+void Core::onOffChanged()
+{
+    QVariantMap map;
+    map.insert("1", true); // coutch
+    map.insert("2", false); // tisch
+    m_view->engine()->rootContext()->setContextProperty("onOffStates", map);
 }
