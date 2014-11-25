@@ -59,9 +59,13 @@ Rectangle {
                 }
             }
         }
-        onWakeup: {
+        onHandDisappeared: {
             root.sleeping = false;
-            sleepTimer.restart();
+            sleepTimer.restart()
+        }
+        onHandDetected: {
+            root.sleeping = false;
+            sleepTimer.stop();
         }
     }
 
