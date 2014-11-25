@@ -17,7 +17,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 import QtQuick 2.1
-import guhtune 1.0
+import core 1.0
 
 Rectangle {
     id: root
@@ -40,13 +40,13 @@ Rectangle {
         onSmallStep: {
             if (!root.selectionMode) {
                 var currentItem = repeater.itemAt(root.currentItem);
-                currentItem.value = Math.min(100, Math.max(0, currentItem.value + (TuneUi.RotateLeft ? -1 : 1)));
+                currentItem.value = Math.min(100, Math.max(0, currentItem.value + (Core.RotateLeft ? -1 : 1)));
                 controller.setValue(root.currentItem, currentItem.value)
             }
         }
         onBigStep: {
             if (root.selectionMode) {
-                if (TuneUi.RotateLeft) {
+                if (Core.RotateLeft) {
                     root.currentItem = (root.currentItem + 1) % 4;
                 } else {
                     if (root.currentItem == 0) {

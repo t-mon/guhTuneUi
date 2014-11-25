@@ -23,7 +23,7 @@
 Core::Core(QObject *parent) :
     QObject(parent)
 {
-    qmlRegisterUncreatableType<Core>("guhtune", 1, 0, "GuhTuneUi", "can't create one. use \"controller\".");
+    qmlRegisterUncreatableType<Core>("core", 1, 0, "Core", "can't create one. use \"controller\".");
     m_view = new QQuickView();
     m_view->engine()->addImportPath(QLatin1String("modules"));
     m_view->engine()->rootContext()->setContextProperty("controller", this);
@@ -35,10 +35,10 @@ Core::Core(QObject *parent) :
     connect(m_client, SIGNAL(buttonPressed()), this, SIGNAL(buttonPressed()));
     connect(m_client, SIGNAL(buttonReleased()), this, SIGNAL(buttonReleased()));
     connect(m_client, SIGNAL(buttonLongPressed()), this, SIGNAL(buttonLongPressed()));
-    connect(m_client, SIGNAL(tickLeft()), this, SIGNAL(tickLeft()));
-    connect(m_client, SIGNAL(tickRight()), this, SIGNAL(tickRight()));
-    connect(m_client, SIGNAL(navigateLeft()), this, SIGNAL(navigateLeft()));
-    connect(m_client, SIGNAL(navigateRight()), this, SIGNAL(navigateRight()));
+    connect(m_client, SIGNAL(tickLeft()), this, SLOT(onTickLeft()));
+    connect(m_client, SIGNAL(tickRight()), this, SLOT(onTickRight()));
+    connect(m_client, SIGNAL(navigateLeft()), this, SLOT(onNavigationLeft()));
+    connect(m_client, SIGNAL(navigateRight()), this, SLOT(onNavigationRight()));
     connect(m_client, SIGNAL(handDetected()), this, SIGNAL(handDetected()));
     connect(m_client, SIGNAL(handDisappeard()), this, SIGNAL(handDisappeard()));
 
@@ -52,10 +52,40 @@ void Core::connectToGuh(const QString &host)
 
 void Core::itemPressed(const int &itemNumber)
 {
-
+    m_client->sendData(QByteArray::number(itemNumber) + ":toggle");
 }
 
 void Core::itemValueChanged(const int &itemNumber, const int &value)
 {
+    m_client->sendData(QByteArray::number(itemNumber) + ":" + QByteArray::number(value));
+}
 
+void Core::toggle(int index)
+{
+    itemPressed(index+1);
+}
+
+void Core::setValue(int index, int value)
+{
+    itemValueChanged(index+1,value);
+}
+
+void Core::onNavigationLeft()
+{
+    emit bigStep(RotationLeft);
+}
+
+void Core::onNavigationRight()
+{
+    emit bigStep(RotationRight);
+}
+
+void Core::onTickLeft()
+{
+    emit smallStep(RotationLeft);
+}
+
+void Core::onTickRight()
+{
+    emit smallStep(RotationRight);
 }

@@ -28,6 +28,7 @@ GuhClient::GuhClient(QObject *parent) :
 void GuhClient::slotConnected()
 {
     qDebug() << "connected to server " << peerAddress() << peerPort();
+    //write(QByteArray::number(1) + ":50\n");
 }
 
 void GuhClient::slotDisconnected()
@@ -40,7 +41,7 @@ void GuhClient::readData()
     while(canReadLine()){
         QByteArray data = readLine();
         if(data.endsWith('\n')){
-            if (data == "NL") {
+            if (data == "NL\n") {
                 qDebug() << "navigation left";
                 emit navigateLeft();
             } else if (data == "NR\n") {
@@ -81,6 +82,6 @@ bool GuhClient::sendData(const QByteArray &data)
         return false;
     }
 
-    write(data);
+    write(data + "\n");
     return true;
 }

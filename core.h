@@ -35,6 +35,10 @@ class Core : public QObject
 {
     Q_OBJECT
 public:
+    enum Rotation {
+        RotationLeft,
+        RotationRight
+    };
     explicit Core(QObject *parent = 0);
 
 private:
@@ -47,6 +51,11 @@ private slots:
     void itemPressed(const int &itemNumber);
     void itemValueChanged(const int &itemNumber, const int &value);
 
+    void onNavigationLeft();
+    void onNavigationRight();
+    void onTickLeft();
+    void onTickRight();
+
 signals:
     void navigateLeft();
     void navigateRight();
@@ -57,6 +66,15 @@ signals:
     void buttonLongPressed();
     void handDetected();
     void handDisappeard();
+
+    void smallStep(Rotation rotation);
+    void bigStep(Rotation rotation);
+    void wakeup();
+
+public slots:
+    void toggle(int index);
+    void setValue(int index, int value);
+
 
 
 };
