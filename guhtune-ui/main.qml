@@ -200,11 +200,11 @@ Rectangle {
                     source: {
                         switch(index) {
                         case 0:
-                            return "qrc:///images/light.svg";
-                        case 1:
                             return "qrc:///images/couch.svg";
-                        case 2:
+                        case 1:
                             return "qrc:///images/work.svg";
+                        case 2:
+                            return "qrc:///images/light.svg";
                         case 3:
                             return "qrc:///images/template.svg";
                         }
@@ -228,7 +228,7 @@ Rectangle {
                         width: height
                         anchors.centerIn: parent
                         value: imageItem.value
-                        visible: index == 1 || index == 2
+                        visible: index == 0 || index == 1
                     }
 
                     Text {

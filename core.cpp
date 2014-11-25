@@ -24,7 +24,16 @@ Core::Core(QObject *parent) :
     QObject(parent)
 {
     qmlRegisterUncreatableType<Core>("core", 1, 0, "Core", "can't create one. use \"controller\".");
+
     m_view = new QQuickView();
+
+    QVariantMap map;
+    map.insert("0", false); // light
+    map.insert("1", false); // coutch
+    map.insert("2", false); // tisch
+    map.insert("3", false); // radiator
+    m_view->engine()->rootContext()->setContextProperty("onOffStates", map);
+
     m_view->engine()->addImportPath(QLatin1String("modules"));
     m_view->engine()->rootContext()->setContextProperty("controller", this);
     m_view->setSource(QUrl(QLatin1String("qrc:///guhtune-ui/main.qml")));
@@ -44,14 +53,6 @@ Core::Core(QObject *parent) :
     connect(m_client, SIGNAL(itemChangedPowerState(int,bool)), this, SLOT(onOffChanged(int,bool)));
 
     connectToGuh("10.10.10.53");
-
-    QVariantMap map;
-    map.insert("0", false); // light
-    map.insert("1", false); // coutch
-    map.insert("2", false); // tisch
-    map.insert("3", false); // radiator
-    m_view->engine()->rootContext()->setContextProperty("onOffStates", map);
-
 }
 
 void Core::connectToGuh(const QString &host)
