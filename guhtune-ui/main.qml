@@ -253,6 +253,8 @@ Rectangle {
                         }
                         text: onOffStates[index] == true ? "ON" : "OFF"
                         font.pixelSize: parent.height / 10
+
+                        visible: index !== 3
                     }
 
                     Item {
