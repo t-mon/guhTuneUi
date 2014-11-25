@@ -40,13 +40,13 @@ Rectangle {
         onSmallStep: {
             if (!root.selectionMode) {
                 var currentItem = repeater.itemAt(root.currentItem);
-                currentItem.value = Math.min(100, Math.max(0, currentItem.value + (Core.RotateLeft ? -1 : 1)));
+                currentItem.value = Math.min(100, Math.max(0, currentItem.value + (Core.RotationLeft ? -1 : 1)));
                 controller.setValue(root.currentItem, currentItem.value)
             }
         }
         onBigStep: {
             if (root.selectionMode) {
-                if (Core.RotateLeft) {
+                if (Core.RotationLeft) {
                     root.currentItem = (root.currentItem + 1) % 4;
                 } else {
                     if (root.currentItem == 0) {
