@@ -192,23 +192,33 @@ Rectangle {
                 }
 
                 // This should be the image
-                Image {
+                Rectangle {
                     id: image
                     anchors.centerIn: parent
                     height: parent.height
                     width: parent.width
-                    source: {
-                        switch(index) {
-                        case 0:
-                            return "qrc:///images/couch.svg";
-                        case 1:
-                            return "qrc:///images/work.svg";
-                        case 2:
-                            return "qrc:///images/light.svg";
-                        case 3:
-                            return "qrc:///images/template.svg";
+                    radius: width/2
+                    color: "#DBE6DE"
+                    Image {
+                        id: realImage
+                        anchors.centerIn: parent
+                        height: parent.height * 0.4
+                        width: height
+                        sourceSize: { width: realImage.width; height: realImage.height }
+                        source: {
+                            switch(index) {
+                            case 0:
+                                return "qrc:///images/couch.svg";
+                            case 1:
+                                return "qrc:///images/work.svg";
+                            case 2:
+                                return "qrc:///images/light.svg";
+                            case 3:
+                                return "";
+                            }
                         }
                     }
+
                     rotation: index * -90 + root.currentItem * 90
                     Behavior on rotation {
                         RotationAnimation {
@@ -245,16 +255,30 @@ Rectangle {
                         anchors.fill: parent
                         visible: index == 3
 
-                        TempIndicator {
+//                        TempIndicator {
+//                            id: currentTempBar
+//                            anchors.centerIn: parent
+//                            anchors.horizontalCenterOffset: -width * 1.5
+//                            height: parent.height / 3
+//                            width: height / 4
+//                            percentage: desiredTempBar.percentage
+//                            Behavior on percentage {
+//                                NumberAnimation { duration: 1000 * 60 * 5 }
+//                            }
+//                        }
+
+                        Image {
                             id: currentTempBar
                             anchors.centerIn: parent
-                            anchors.horizontalCenterOffset: -width * 1.5
+                            anchors.horizontalCenterOffset: -width * 0.4
                             height: parent.height / 3
-                            width: height / 4
-                            percentage: desiredTempBar.percentage
-                            Behavior on percentage {
-                                NumberAnimation { duration: 1000 * 60 * 5 }
-                            }
+                            width: height
+                            source: "qrc:///images/radiator.svg"
+                            property int minTemp: 0
+                            property int maxTemp: 50
+                            property int percentage: 50
+                            property real currentTemp: (minTemp +  1.0 * (maxTemp - minTemp) * percentage / 100)
+
                         }
 
                         Text {

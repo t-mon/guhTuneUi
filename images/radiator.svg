@@ -14,12 +14,12 @@
    y="0px"
    width="256"
    height="256"
-   viewBox="0 0 255.99999 256"
+   viewBox="0 0 255.99999 255.99999"
    enable-background="new 0 0 1190.55 841.89"
    xml:space="preserve"
    id="svg2"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="work.svg"><metadata
+   sodipodi:docname="radiator.svg"><metadata
      id="metadata155"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -40,9 +40,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.4851464"
-     inkscape:cx="93.009976"
-     inkscape:cy="96.912785"
+     inkscape:zoom="3.1714774"
+     inkscape:cx="86.490276"
+     inkscape:cy="147.14421"
      inkscape:window-x="0"
      inkscape:window-y="48"
      inkscape:window-maximized="1"
@@ -50,7 +50,7 @@
      id="Couch"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g5"
        style="display:inline"><path
@@ -80,7 +80,7 @@
      id="WeMo"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g22"
        style="display:inline"><path
@@ -133,7 +133,7 @@
      id="Deckenlampe"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g45"
        style="display:inline"><path
@@ -156,7 +156,7 @@
      id="Lampe_2"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g56"
        style="display:inline"><rect
@@ -201,7 +201,7 @@
      id="Lampe_3"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g77"
        style="display:inline"><path
@@ -239,7 +239,7 @@
      id="Stehlampe"
      display="none"
      style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
+     transform="translate(-744.96901,-163.99)"><g
        display="inline"
        id="g94"
        style="display:inline"><rect
@@ -262,12 +262,8 @@
          id="path104"
          inkscape:connector-curvature="0" /></g></g><g
      id="Thermometer"
-     display="none"
-     style="display:none"
-     transform="translate(-720.00001,-164.031)"><g
-       display="inline"
-       id="g107"
-       style="display:inline"><path
+     transform="matrix(3.1956235,0,0,3.1956235,-2300.5588,-1086.321)"><g
+       id="g107"><path
          d="m 760.006,342.5 c 4.136,0 7.5,3.364 7.5,7.5 v 43.844 0.969 l 0.653,0.716 0.076,0.083 0.076,0.083 0.083,0.076 c 2.583,2.362 4.064,5.724 4.064,9.223 0,6.89 -5.605,12.495 -12.495,12.495 -6.89,0 -12.495,-5.605 -12.495,-12.495 0,-3.551 1.52,-6.947 4.169,-9.317 l 0.832,-0.745 10e-4,-1.117 0.036,-43.815 c 0,-4.136 3.364,-7.5 7.5,-7.5 m 0,-2.5 c -5.523,0 -10,4.477 -10,10 l -0.035,43.815 c -3.069,2.746 -5.002,6.737 -5.002,11.18 0,8.281 6.714,14.995 14.995,14.995 8.281,0 14.995,-6.713 14.995,-14.995 0,-4.383 -1.879,-8.326 -4.877,-11.068 l -0.076,-0.083 V 350 c 0,-5.523 -4.477,-10 -10,-10 l 0,0 z"
          id="path109"
          inkscape:connector-curvature="0" /><g
@@ -307,8 +303,12 @@
          height="1.25"
          id="rect123" /></g></g><g
      id="Schreibtisch"
-     transform="matrix(3.2004024,0,0,3.2004024,-2304.3058,-1134.2243)"><g
-       id="g126"><path
+     display="none"
+     style="display:none"
+     transform="translate(-744.96901,-163.99)"><g
+       display="inline"
+       id="g126"
+       style="display:inline"><path
          d="m 797.5,382.514 v 1.236 h -75 v -1.236 h 75 m 2.5,-2.5 h -80 v 6.236 h 80 v -6.236 l 0,0 z"
          id="path128"
          inkscape:connector-curvature="0" /><path
@@ -349,4 +349,4 @@
          height="1.25"
          id="rect148" /></g></g><g
      id="Guides_außen"
-     transform="translate(-720.00001,-164.031)" /></svg>
+     transform="translate(-744.96901,-163.99)" /></svg>
