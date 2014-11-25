@@ -38,6 +38,7 @@ Rectangle {
         onButtonPressed: root.buttonPressed = true
         onButtonReleased: { root.buttonPressed = false; root.selectionMode = false }
         onSmallStep: {
+            print("smallstep!", rotation);
             if (!root.selectionMode) {
                 var currentItem = repeater.itemAt(root.currentItem);
                 currentItem.value = Math.min(100, Math.max(0, currentItem.value + (rotation == Core.RotationLeft ? -1 : 1)));
@@ -45,6 +46,7 @@ Rectangle {
             }
         }
         onBigStep: {
+            print("bigstep!", rotation);
             if (root.selectionMode) {
                 if (rotation == Core.RotationLeft) {
                     root.currentItem = (root.currentItem + 1) % 4;
