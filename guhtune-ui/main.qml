@@ -261,30 +261,24 @@ Rectangle {
                         anchors.fill: parent
                         visible: index == 3
 
-//                        TempIndicator {
-//                            id: currentTempBar
-//                            anchors.centerIn: parent
-//                            anchors.horizontalCenterOffset: -width * 1.5
-//                            height: parent.height / 3
-//                            width: height / 4
-//                            percentage: desiredTempBar.percentage
-//                            Behavior on percentage {
-//                                NumberAnimation { duration: 1000 * 60 * 5 }
-//                            }
-//                        }
-
                         Image {
-                            id: currentTempBar
                             anchors.centerIn: parent
                             anchors.horizontalCenterOffset: -width * 0.4
                             height: parent.height / 3
                             width: height
                             source: "qrc:///images/radiator.svg"
-                            property int minTemp: 0
-                            property int maxTemp: 50
-                            property int percentage: 50
-                            property real currentTemp: (minTemp +  1.0 * (maxTemp - minTemp) * percentage / 100)
+                        }
 
+                        TempIndicator {
+                            id: currentTempBar
+                            anchors.centerIn: parent
+//                            anchors.horizontalCenterOffset: -width * 1.5
+                            height: parent.height / 3
+                            width: height / 4
+                            percentage: desiredTempBar.percentage
+                            Behavior on percentage {
+                                NumberAnimation { duration: 1000 * 60 * 5 }
+                            }
                         }
 
                         Text {
