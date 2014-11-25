@@ -6,5 +6,7 @@
         <file>images/template.svg</file>
         <file>images/work.svg</file>
         <file>images/front.png</file>
+        <file>images/off-area.svg</file>
+        <file>images/on-area.svg</file>
     </qresource>
 </RCC>
