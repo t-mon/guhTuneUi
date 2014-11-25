@@ -34,6 +34,7 @@
 class Core : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(Rotation)
 public:
     enum Rotation {
         RotationLeft,
