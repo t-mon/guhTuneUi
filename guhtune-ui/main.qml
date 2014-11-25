@@ -99,7 +99,6 @@ Rectangle {
         State {
             name: "buttons"; when: !splashTimer.running && !root.sleeping
             PropertyChanges { target: rotator; opacity: 1 }
-            PropertyChanges { target: valueCircle; circleOpacity: root.selectionMode ? 0 : 1 }
         },
         State {
             name: "clock"; when: root.sleeping
@@ -114,13 +113,11 @@ Rectangle {
             PropertyAnimation { target: splashImage; property: "opacity"; duration: 200 }
             PropertyAnimation { target: rotator; property: "opacity"; duration: 200 }
             PropertyAnimation { target: clock; property: "opacity"; duration: 200 }
-            PropertyAnimation { target: valueCircle; property: "circleOpacity"; duration: 200 }
         },
         Transition {
             PropertyAnimation { target: splashImage; property: "opacity"; duration: splashTimer.interval }
             PropertyAnimation { target: rotator; property: "opacity"; duration: splashTimer.interval }
             PropertyAnimation { target: clock; property: "opacity"; duration: splashTimer.interval }
-            PropertyAnimation { target: valueCircle; property: "circleOpacity"; duration: splashTimer.interval }
         }
     ]
 
