@@ -23,22 +23,22 @@ Item {
 
     property int value: 10
 
-    // value : 100 = x : 50
+    // value : 100 = x : 40
 
     Repeater {
-        model: 50
+        model: 40
 
         Item {
             height: root.height * 0.95
             width: height / 100
             anchors.centerIn: parent
 
-            rotation: -79 + index * 3.2
+            rotation: -59 + index * 3
             Rectangle {
                 anchors { top: parent.top; left: parent.left; right: parent.right }
                 height: width * 10
                 radius: width / 2
-                opacity: index <= root.value/2 ? 1 : 0.2
+                opacity: index <= root.value * 40 / 100 ? 1 : 0.2
             }
         }
     }
@@ -47,13 +47,13 @@ Item {
         font.pixelSize: root.height / 10
         color: "white"
         text: "-"
-        anchors { left: parent.left; leftMargin: root.height / 20; verticalCenter: parent.verticalCenter; verticalCenterOffset: -root.height / 40 }
+        anchors { left: parent.left; leftMargin: root.height / 15; verticalCenter: parent.verticalCenter; verticalCenterOffset: -root.height / 7 }
     }
 
     Text {
         font.pixelSize: root.height / 10
         color: "white"
         text: "+"
-        anchors { right: parent.right; rightMargin: root.height / 40; verticalCenter: parent.verticalCenter; verticalCenterOffset: -root.height / 40 }
+        anchors { right: parent.right; rightMargin: root.height / 15; verticalCenter: parent.verticalCenter; verticalCenterOffset: -root.height / 7 }
     }
 }

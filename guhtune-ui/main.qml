@@ -208,7 +208,8 @@ Rectangle {
                         anchors.centerIn: parent
                         height: parent.height * 0.4
                         width: height
-                        sourceSize: { width: realImage.width; height: realImage.height }
+                        sourceSize.width: width
+                        sourceSize.height: height
                         source: {
                             switch(index) {
                             case 0:
@@ -245,14 +246,26 @@ Rectangle {
                         visible: index == 0 || index == 1
                     }
 
+                    Image {
+                        source: onOffStates[index] ? "qrc:///images/on-area.svg" : "qrc:///images/off-area.svg"
+                        height: parent.height * 0.95
+                        width: parent.width * 0.95
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            bottom: parent.bottom
+                            bottomMargin: parent.height * 0.025
+                        }
+                        visible: index !== 3
+                    }
+
                     Text {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                             bottom: parent.bottom
-                            bottomMargin: parent.height * 0.1
+                            bottomMargin: parent.height * 0.075
                         }
                         text: onOffStates[index] == true ? "ON" : "OFF"
-                        font.pixelSize: parent.height / 10
+                        font.pixelSize: parent.height / 15
 
                         visible: index !== 3
                     }
