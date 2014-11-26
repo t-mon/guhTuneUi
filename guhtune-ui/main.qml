@@ -390,7 +390,7 @@ Rectangle {
         source: "qrc:///images/front.png"
     }
 
-    DebugUi {
+//    DebugUi {
 
-    }
+//    }
 }
