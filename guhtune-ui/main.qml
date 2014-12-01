@@ -107,6 +107,16 @@ Rectangle {
         if (!root.buttonPressed) {
             controller.toggle(root.currentItem)
             selectionMode = false;
+
+            switch (root.currentItem) {
+            case 0:
+                notification.play();
+                break;
+            case 1:
+                notification.stop();
+                break;
+            }
+
         }
         root.sleeping = false;
         sleepTimer.restart();
@@ -420,5 +430,9 @@ Rectangle {
     }
 
     DebugUi {
+    }
+
+    Notification {
+        id: notification
     }
 }

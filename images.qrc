@@ -9,5 +9,6 @@
         <file>images/off-area.svg</file>
         <file>images/on-area.svg</file>
         <file>images/radiator.svg</file>
+        <file>images/music.svg</file>
     </qresource>
 </RCC>
