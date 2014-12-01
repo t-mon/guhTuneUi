@@ -28,7 +28,7 @@ Rectangle {
 
     Component.onCompleted: root.forceActiveFocus()
 
-    property int currentItem: 3
+    property int currentItem: 0
     property bool buttonPressed: false
     property bool selectionMode: false
     property bool sleeping: false
@@ -320,6 +320,11 @@ Rectangle {
                             }
 
                             targetValue: imageItem.value * (maxValue - minValue) / 100 + minValue
+
+                            opacity: root.selectionMode ? 0 : 1
+                            Behavior on opacity {
+                                NumberAnimation {}
+                            }
                         }
                     }
                 }
