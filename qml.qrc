@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>guhtune-ui/DebugUi.qml</file>
         <file>guhtune-ui/main.qml</file>
-        <file>guhtune-ui/TempIndicator.qml</file>
         <file>guhtune-ui/ValueCircle.qml</file>
         <file>guhtune-ui/Notification.qml</file>
         <file>guhtune-ui/Radiator.qml</file>
