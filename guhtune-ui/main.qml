@@ -372,6 +372,8 @@ Rectangle {
         color: "white"
         opacity: 0
         font.pixelSize: root.height / 6
+        font.family: "Ubuntu"
+        font.weight: Font.Light
     }
 
     Image {
