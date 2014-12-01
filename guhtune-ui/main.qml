@@ -244,6 +244,10 @@ Rectangle {
                         anchors.centerIn: parent
                         value: imageItem.value
                         visible: index == 0 || index == 1
+                        opacity: root.selectionMode ? 0 : 1
+                        Behavior on opacity {
+                            NumberAnimation {}
+                        }
                     }
 
                     Image {
@@ -256,6 +260,10 @@ Rectangle {
                             bottomMargin: parent.height * 0.025
                         }
                         visible: index !== 3
+                        opacity: root.selectionMode ? 0 : 1
+                        Behavior on opacity {
+                            NumberAnimation {}
+                        }
                     }
 
                     Text {
@@ -268,6 +276,10 @@ Rectangle {
                         font.pixelSize: parent.height / 15
 
                         visible: index !== 3
+                        opacity: root.selectionMode ? 0 : 1
+                        Behavior on opacity {
+                            NumberAnimation {}
+                        }
                     }
 
                     Item {
