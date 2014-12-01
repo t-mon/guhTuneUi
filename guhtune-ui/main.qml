@@ -33,10 +33,24 @@ Rectangle {
     property bool selectionMode: false
     property bool sleeping: false
 
+    property bool selectedWhilePressed: false
+
     Connections {
         target: controller
-        onButtonPressed: root.buttonPressed = true
-        onButtonReleased: { root.buttonPressed = false; root.selectionMode = false }
+        onButtonPressed: {
+            if (root.selectionMode) {
+                root.selectionMode = false;
+            } else {
+                root.buttonPressed = true;
+                root.selectedWhilePressed = false;
+            }
+        }
+        onButtonReleased: {
+            root.buttonPressed = false;
+            if (root.selectedWhilePressed) {
+                root.selectionMode = false;
+            }
+        }
         onSmallStep: {
             print("smallstep!", rotation);
             if (!root.selectionMode) {
@@ -58,6 +72,7 @@ Rectangle {
                     }
                 }
             }
+            root.selectedWhilePressed = true;
         }
         onHandDisappeared: {
             root.sleeping = false;
