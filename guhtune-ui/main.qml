@@ -173,7 +173,7 @@ Rectangle {
                 direction: RotationAnimation.Shortest
             }
         }
-        color: "black"
+        color: "#cbdccc"
         border.width: 0
         border.color: "white"
         opacity: 0
@@ -391,6 +391,5 @@ Rectangle {
     }
 
     DebugUi {
-
     }
 }
