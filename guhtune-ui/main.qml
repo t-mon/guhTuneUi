@@ -28,7 +28,7 @@ Rectangle {
 
     Component.onCompleted: root.forceActiveFocus()
 
-    property int currentItem: 0
+    property int currentItem: 3
     property bool buttonPressed: false
     property bool selectionMode: false
     property bool sleeping: false
@@ -244,7 +244,7 @@ Rectangle {
                             case 2:
                                 return "qrc:///images/light.svg";
                             case 3:
-                                return "";
+                                return "qrc:///images/radiator.svg";
                             }
                         }
                     }
@@ -311,45 +311,15 @@ Rectangle {
                         anchors.fill: parent
                         visible: index == 3
 
-                        Image {
-                            anchors.centerIn: parent
-                            anchors.horizontalCenterOffset: -parent.width * 0.25
-                            height: parent.height / 3
-                            width: height
-                            source: "qrc:///images/radiator.svg"
-                        }
-
-                        TempIndicator {
-                            id: currentTempBar
-                            anchors.centerIn: parent
-//                            anchors.horizontalCenterOffset: -width * 1.5
-                            height: parent.height / 3
-                            width: height / 4
-                            percentage: desiredTempBar.percentage
-                            Behavior on percentage {
+                        Radiator {
+                            anchors.fill: parent
+                            // value : 100 = x : max
+                            currentValue: targetValue
+                            Behavior on currentValue {
                                 NumberAnimation { duration: 1000 * 60 * 5 }
                             }
-                        }
 
-                        Text {
-                            anchors { top: currentTempBar.bottom; horizontalCenter: currentTempBar.horizontalCenter; topMargin: height / 2 }
-                            text: currentTempBar.currentTemp + "°"
-                            font.pixelSize: parent.height / 15
-                        }
-
-                        TempIndicator {
-                            id: desiredTempBar
-                            anchors.centerIn: parent
-                            anchors.horizontalCenterOffset: parent.width * 0.25
-                            height: parent.height / 3
-                            width: height / 4
-                            percentage: imageItem.value
-                        }
-                        Text {
-                            anchors { top: desiredTempBar.bottom; horizontalCenter: desiredTempBar.horizontalCenter; topMargin: height / 2 }
-                            // 0 : (max - min) = perc : 100
-                            text: desiredTempBar.currentTemp + "°"
-                            font.pixelSize: parent.height / 15
+                            targetValue: imageItem.value * (maxValue - minValue) / 100 + minValue
                         }
                     }
                 }

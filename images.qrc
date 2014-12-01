@@ -10,5 +10,7 @@
         <file>images/on-area.svg</file>
         <file>images/radiator.svg</file>
         <file>images/music.svg</file>
+        <file>images/radiator-particle.svg</file>
+        <file>images/radiator-particle-inset.svg</file>
     </qresource>
 </RCC>
