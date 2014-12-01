@@ -68,7 +68,7 @@ void GuhClient::readData()
                 emit handDetected();
             } else if (data == "HDI\n") {
                 qDebug() << "hand disappeared";
-                emit handDisappeard();
+                emit handDisappeared();
             } else if (data.left(2) == "1:"){
                 if(data.right(2) == "0\n"){
                     qDebug() << "item 1 -> OFF";

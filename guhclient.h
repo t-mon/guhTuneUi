@@ -43,7 +43,7 @@ signals:
     void buttonReleased();
     void buttonLongPressed();
     void handDetected();
-    void handDisappeard();
+    void handDisappeared();
 
     void itemChangedPowerState(const int &item, const bool & powerState);
 

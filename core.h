@@ -68,7 +68,7 @@ signals:
     void buttonReleased();
     void buttonLongPressed();
     void handDetected();
-    void handDisappeard();
+    void handDisappeared();
 
     void smallStep(Rotation rotation);
     void bigStep(Rotation rotation);

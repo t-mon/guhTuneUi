@@ -371,7 +371,7 @@ Rectangle {
         anchors.centerIn: parent
         color: "white"
         opacity: 0
-        font.pixelSize: root.height / 10
+        font.pixelSize: root.height / 6
     }
 
     Image {
@@ -390,7 +390,7 @@ Rectangle {
         source: "qrc:///images/front.png"
     }
 
-//    DebugUi {
+    DebugUi {
 
-//    }
+    }
 }
